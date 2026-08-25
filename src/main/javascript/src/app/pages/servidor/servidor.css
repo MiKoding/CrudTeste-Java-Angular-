@@ -1,0 +1,116 @@
+.cadastro {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  margin-bottom: 0.9rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #2563eb;
+  border-color: #2563eb;
+}
+
+.acoes {
+  display: flex;
+  gap: 0.75rem;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  background: #1d4ed8;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.secundario {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+button.link {
+  background: transparent;
+  color: #1d4ed8;
+  padding: 0;
+}
+
+button.perigo {
+  color: #b91c1c;
+}
+
+.alerta {
+  margin: 0 0 0.9rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+}
+
+.alerta-erro {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.alerta-ok {
+  background: #ecfdf3;
+  color: #166534;
+}
+
+.vazio {
+  margin: 0;
+  color: #64748b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.7rem 0.4rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.coluna-acoes {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}

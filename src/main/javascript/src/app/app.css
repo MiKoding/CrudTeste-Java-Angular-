@@ -1,0 +1,28 @@
+.pagina {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.8rem;
+}
+
+header p {
+  margin: 0;
+  color: #475569;
+}
+
+app-secretaria,
+app-servidor {
+  display: block;
+}
+
+app-servidor {
+  margin-top: 2.5rem;
+}

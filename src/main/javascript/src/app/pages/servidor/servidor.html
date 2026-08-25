@@ -1,0 +1,110 @@
+<section class="cadastro">
+  <form class="card" (ngSubmit)="salvar()">
+    <h2>{{ editando() ? 'Editar servidor' : 'Novo servidor' }}</h2>
+
+    <label for="nomeServidor">Nome</label>
+    <input
+      id="nomeServidor"
+      name="nome"
+      [ngModel]="nome()"
+      (ngModelChange)="nome.set($event)"
+      placeholder="Ex: Ana Souza"
+      required
+    />
+
+    <label for="emailServidor">E-mail</label>
+    <input
+      id="emailServidor"
+      name="email"
+      type="email"
+      [ngModel]="email()"
+      (ngModelChange)="email.set($event)"
+      placeholder="Ex: ana@email.com"
+      required
+    />
+
+    <label for="dataNascimento">Data de nascimento</label>
+    <input
+      id="dataNascimento"
+      name="dataNascimento"
+      type="date"
+      [ngModel]="dataNascimento()"
+      (ngModelChange)="dataNascimento.set($event)"
+      required
+    />
+
+    <label for="secretaria">Secretaria</label>
+    <select
+      id="secretaria"
+      name="secretaria"
+      [ngModel]="secretariaId()"
+      (ngModelChange)="secretariaId.set($event)"
+      (click)="carregarSecretarias()"
+      (focus)="carregarSecretarias()"
+      required
+    >
+      <option [ngValue]="undefined">Selecione a secretaria</option>
+      @for (secretaria of secretarias(); track secretaria.id) {
+        <option [ngValue]="secretaria.id">
+          {{ secretaria.sigla }} — {{ secretaria.nomeSecretaria }}
+        </option>
+      }
+    </select>
+
+    @if (secretarias().length === 0) {
+      <p class="vazio">Cadastre uma secretaria acima antes de incluir um servidor.</p>
+    }
+
+    @if (erro()) {
+      <p class="alerta alerta-erro" role="alert">{{ erro() }}</p>
+    }
+    @if (mensagem()) {
+      <p class="alerta alerta-ok">{{ mensagem() }}</p>
+    }
+
+    <div class="acoes">
+      <button type="submit" [disabled]="salvando() || secretarias().length === 0">
+        {{ editando() ? 'Atualizar' : 'Cadastrar' }}
+      </button>
+      <button type="button" class="secundario" (click)="limpar()" [disabled]="salvando()">
+        Limpar
+      </button>
+    </div>
+  </form>
+
+  <div class="card">
+    <h2>Servidores cadastrados</h2>
+
+    @if (lista().length === 0) {
+      <p class="vazio">Nenhum servidor cadastrado ainda.</p>
+    } @else {
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Nascimento</th>
+            <th>Secretaria</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of lista(); track item.id) {
+            <tr>
+              <td>{{ item.id }}</td>
+              <td>{{ item.nome }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.dataNascimento }}</td>
+              <td>{{ nomeSecretaria(item) }}</td>
+              <td class="coluna-acoes">
+                <button type="button" class="link" (click)="editar(item)">Editar</button>
+                <button type="button" class="link perigo" (click)="excluir(item)">Excluir</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+</section>
